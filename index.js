@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const apiRouter = require('./routes/api');
 
 const app = express();
+const port = process.env.PORT || 3000;
 
 require('./db');
 
@@ -11,6 +12,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/api', apiRouter);
 
-app.listen(3000, () => {
-    console.log('Server on')
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`)
 });
