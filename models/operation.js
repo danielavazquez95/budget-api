@@ -7,7 +7,7 @@ module.exports = (sequelize, type) => {
             autoIncrement: true
         },
         concept: type.STRING,
-        amount: type.INTEGER,
+        price: type.INTEGER,
         date: type.STRING,
         type: type.STRING
     })
