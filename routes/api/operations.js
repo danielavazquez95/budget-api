@@ -6,6 +6,14 @@ router.get('/', async (req, res) => {
     res.json(operations);
 });
 
+router.get('/:userId', async (req, res) => {
+    const operations = await Operation.findAll({
+        where: {userId : req.params.userId }
+    });
+    res.json(operations);
+});
+
+
 router.post('/', async (req, res) => {
     const operation = await Operation.create(req.body);
     res.json(operation);

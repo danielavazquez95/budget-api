@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, type) => {
     return sequelize.define('operation', {
         id:{
@@ -11,5 +10,6 @@ module.exports = (sequelize, type) => {
         date: type.STRING,
         type: type.STRING
     })
-
-};
+  
+ };
+ 
