@@ -28,7 +28,8 @@ router.post('/login', async (req, res) => {
     if (user) {
         const equal = bcrypt.compareSync(req.body.password, user.password);
         if (equal) {
-            res.json({success: createToken(user)});
+            res.json({success: createToken(user), id: user.id});
+            
         } else {
             res.json({ error: 'User or password error'});
         }

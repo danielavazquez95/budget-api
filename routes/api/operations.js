@@ -1,14 +1,16 @@
 const router = require('express').Router();
 const { Operation } = require('../../db'); 
 
-router.get('/', async (req, res) => {
-    const operations = await Operation.findAll();
+router.get('/entries/:userId', async (req, res) => {
+    const operations = await Operation.findAll({
+        where: {type : 'Entry', userId : req.params.userId }
+    });
     res.json(operations);
 });
 
-router.get('/:userId', async (req, res) => {
+router.get('/expenses/:userId', async (req, res) => {
     const operations = await Operation.findAll({
-        where: {userId : req.params.userId }
+        where: {type : 'Expense', userId : req.params.userId }
     });
     res.json(operations);
 });
