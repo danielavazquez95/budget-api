@@ -13,7 +13,7 @@ const User = UserModel(sequelize, Sequelize);
 User.hasMany(Operation);
 Operation.belongsTo(User);
 
-sequelize.sync({force: true})
+sequelize.sync({force: false})
     .then(() => {
         console.log('Synchronized tables')
     });

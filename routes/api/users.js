@@ -2,7 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const { User } = require('../../db');
 const {check, validationResult } = require('express-validator');
-const moment = require('moment');
 const jwt = require('jwt-simple');
 
 
@@ -41,9 +40,7 @@ router.post('/login', async (req, res) => {
 
 const createToken = (user) => {
     const payload = {
-        userId: user.id,
-        createdAt: moment().unix(),
-        expiredAt: moment().add(20, 'minutes').unix()
+        userId: user.id
     }
 
     return jwt.encode(payload, 'secret phrase');

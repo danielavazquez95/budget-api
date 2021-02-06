@@ -1,5 +1,4 @@
 const jwt = require('jwt-simple');
-const moment = require('moment');
 
 const checkToken = (req, res, next) => {
 
@@ -14,10 +13,6 @@ const checkToken = (req, res, next) => {
         payload = jwt.decode(userToken, 'secret phrase');
     } catch (err) {
         return res.json({error: 'Token is wrong'});
-    }
-
-    if(payload.expiredAt < moment().unix()) {
-        return res.json({ error: 'Token has expired'});
     }
     
     req.userId = payload.userId;
