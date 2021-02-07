@@ -3,7 +3,10 @@ const { Operation } = require('../../db');
 
 router.get('/:userId', async (req, res) => {
     const operations = await Operation.findAll({
-        where: {userId : req.params.userId }
+        where: {userId : req.params.userId },
+        order : [ 
+            [ 'createdAt' ,  'desc' ] 
+          ] 
     });
     res.json(operations);
 });
