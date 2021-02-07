@@ -1,20 +1,12 @@
 const router = require('express').Router();
 const { Operation } = require('../../db'); 
 
-router.get('/entries/:userId', async (req, res) => {
+router.get('/:userId', async (req, res) => {
     const operations = await Operation.findAll({
-        where: {type : 'Entry', userId : req.params.userId }
+        where: {userId : req.params.userId }
     });
     res.json(operations);
 });
-
-router.get('/expenses/:userId', async (req, res) => {
-    const operations = await Operation.findAll({
-        where: {type : 'Expense', userId : req.params.userId }
-    });
-    res.json(operations);
-});
-
 
 router.post('/', async (req, res) => {
     const operation = await Operation.create(req.body);
