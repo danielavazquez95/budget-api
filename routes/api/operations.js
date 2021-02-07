@@ -5,7 +5,7 @@ router.get('/:userId', async (req, res) => {
     const operations = await Operation.findAll({
         where: {userId : req.params.userId },
         order : [ 
-            [ 'createdAt' ,  'desc' ] 
+            [ 'createdAt' ,  'asc' ] 
           ] 
     });
     res.json(operations);
